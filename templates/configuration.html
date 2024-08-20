@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Configuration</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        h2 {
+            margin-top: 40px;
+        }
+        form {
+            display: inline;
+        }
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .modify-button {
+            background-color: green;
+            color: white;
+            border: none;
+        }
+        .delete-button {
+            background-color: red;
+            color: white;
+            border: none;
+        }
+        .add-button {
+            background-color: blue;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Configuration Tables</h1>
+
+    <h2>OWNER Table</h2>
+    <table>
+        <tr>
+            {% for column in owner_rows[0].keys() %}
+            <th>{{ column }}</th>
+            {% endfor %}
+            <th>Actions</th>
+        </tr>
+        {% for row in owner_rows %}
+        <tr>
+            <form action="{{ url_for('modify_row', table_name='OWNER', row_id=row['id']) }}" method="post">
+                {% for key, value in row.items() %}
+                <td>
+                    {% if key == 'id' %}
+                        {{ value }}
+                    {% else %}
+                        <input type="text" name="{{ key }}" value="{{ value }}">
+                    {% endif %}
+                </td>
+                {% endfor %}
+                <td>
+                    <button type="submit" class="modify-button">Modify</button>
+                </td>
+            </form>
+            <td>
+                <form action="{{ url_for('delete_row', table_name='OWNER', row_id=row['id']) }}" method="post">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <form action="{{ url_for('add_row', table_name='OWNER') }}" method="post">
+                {% for key in owner_rows[0].keys() %}
+                <td>
+                    {% if key == 'id' %}
+                        <!-- id field is not editable, leave it empty -->
+                        (Auto)
+                    {% else %}
+                        <input type="text" name="{{ key }}" placeholder="Enter {{ key }}">
+                    {% endif %}
+                </td>
+                {% endfor %}
+                <td>
+                    <button type="submit" class="add-button">Add</button>
+                </td>
+            </form>
+        </tr>
+    </table>
+
+    <h2>CATEGORY Table</h2>
+    <table>
+        <tr>
+            {% for column in category_rows[0].keys() %}
+            <th>{{ column }}</th>
+            {% endfor %}
+            <th>Actions</th>
+        </tr>
+        {% for row in category_rows %}
+        <tr>
+            <form action="{{ url_for('modify_row', table_name='CATEGORY', row_id=row['id']) }}" method="post">
+                {% for key, value in row.items() %}
+                <td>
+                    {% if key == 'id' %}
+                        {{ value }}
+                    {% else %}
+                        <input type="text" name="{{ key }}" value="{{ value }}">
+                    {% endif %}
+                </td>
+                {% endfor %}
+                <td>
+                    <button type="submit" class="modify-button">Modify</button>
+                </td>
+            </form>
+            <td>
+                <form action="{{ url_for('delete_row', table_name='CATEGORY', row_id=row['id']) }}" method="post">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <form action="{{ url_for('add_row', table_name='CATEGORY') }}" method="post">
+                {% for key in category_rows[0].keys() %}
+                <td>
+                    {% if key == 'id' %}
+                        (Auto)
+                    {% else %}
+                        <input type="text" name="{{ key }}" placeholder="Enter {{ key }}">
+                    {% endif %}
+                </td>
+                {% endfor %}
+                <td>
+                    <button type="submit" class="add-button">Add</button>
+                </td>
+            </form>
+        </tr>
+    </table>
+
+    <h2>DOC_STATE Table</h2>
+    <table>
+        <tr>
+            {% for column in doc_state_rows[0].keys() %}
+            <th>{{ column }}</th>
+            {% endfor %}
+            <th>Actions</th>
+        </tr>
+        {% for row in doc_state_rows %}
+        <tr>
+            <form action="{{ url_for('modify_row', table_name='DOC_STATE', row_id=row['id']) }}" method="post">
+                {% for key, value in row.items() %}
+                <td>
+                    {% if key == 'id' %}
+                        {{ value }}
+                    {% else %}
+                        <input type="text" name="{{ key }}" value="{{ value }}">
+                    {% endif %}
+                </td>
+                {% endfor %}
+                <td>
+                    <button type="submit" class="modify-button">Modify</button>
+                </td>
+            </form>
+            <td>
+                <form action="{{ url_for('delete_row', table_name='DOC_STATE', row_id=row['id']) }}" method="post">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <form action="{{ url_for('add_row', table_name='DOC_STATE') }}" method="post">
+                {% for key in doc_state_rows[0].keys() %}
+                <td>
+                    {% if key == 'id' %}
+                        (Auto)
+                    {% else %}
+                        <input type="text" name="{{ key }}" placeholder="Enter {{ key }}">
+                    {% endif %}
+                </td>
+                {% endfor %}
+                <td>
+                    <button type="submit" class="add-button">Add</button>
+                </td>
+            </form>
+        </tr>
+    </table>
+
+    <h2>REVIEW_STATE Table</h2>
+    <table>
+        <tr>
+            {% for column in review_state_rows[0].keys() %}
+            <th>{{ column }}</th>
+            {% endfor %}
+            <th>Actions</th>
+        </tr>
+        {% for row in review_state_rows %}
+        <tr>
+            <form action="{{ url_for('modify_row', table_name='REVIEW_STATE', row_id=row['id']) }}" method="post">
+                {% for key, value in row.items() %}
+                <td>
+                    {% if key == 'id' %}
+                        {{ value }}
+                    {% else %}
+                        <input type="text" name="{{ key }}" value="{{ value }}">
+                    {% endif %}
+                </td>
+                {% endfor %}
+                <td>
+                    <button type="submit" class="modify-button">Modify</button>
+                </td>
+            </form>
+            <td>
+                <form action="{{ url_for('delete_row', table_name='REVIEW_STATE', row_id=row['id']) }}" method="post">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <form action="{{ url_for('add_row', table_name='REVIEW_STATE') }}" method="post">
+                {% for key in review_state_rows[0].keys() %}
+                <td>
+                    {% if key == 'id' %}
+                        (Auto)
+                    {% else %}
+                        <input type="text" name="{{ key }}" placeholder="Enter {{ key }}">
+                    {% endif %}
+                </td>
+                {% endfor %}
+                <td>
+                    <button type="submit" class="add-button">Add</button>
+                </td>
+            </form>
+        </tr>
+    </table>
+
+    <!-- DOCUMENT Table -->
+    <h2>DOCUMENT Table</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Initials</th>
+            <th>Owner</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+        {% for row in document_rows %}
+        <tr>
+            <form action="{{ url_for('modify_row', table_name='DOCUMENT', row_id=row['id']) }}" method="post">
+                <td>{{ row['id'] }}</td>
+                <td><input type="text" name="name" value="{{ row['name'] }}"></td>
+                <td><input type="text" name="initials" value="{{ row['initials'] }}"></td>
+                <td>
+                    <select name="owner_id">
+                        {% for owner in owner_list %}
+                        <option value="{{ owner['id'] }}" {% if owner['id'] == row['owner_id'] %}selected{% endif %}>{{ owner['name'] }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <select name="category_id">
+                        {% for category in category_list %}
+                        <option value="{{ category['id'] }}" {% if category['id'] == row['category_id'] %}selected{% endif %}>{{ category['name'] }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <button type="submit" class="modify-button">Modify</button>
+                </td>
+            </form>
+            <td>
+                <form action="{{ url_for('delete_row', table_name='DOCUMENT', row_id=row['id']) }}" method="post">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <form action="{{ url_for('add_row', table_name='DOCUMENT') }}" method="post">
+                <td>(Auto)</td>
+                <td><input type="text" name="name" placeholder="Enter Name"></td>
+                <td><input type="text" name="initials" placeholder="Enter Initials"></td>
+                <td>
+                    <select name="owner_id">
+                        {% for owner in owner_list %}
+                        <option value="{{ owner['id'] }}">{{ owner['name'] }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <select name="category_id">
+                        {% for category in category_list %}
+                        <option value="{{ category['id'] }}">{{ category['name'] }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <button type="submit" class="add-button">Add</button>
+                </td>
+            </form>
+        </tr>
+    </table>
+
+    <br>
+    <a href="/">Go Back</a>
+</body>
+</html>
