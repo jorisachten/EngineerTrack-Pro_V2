@@ -29,7 +29,7 @@
             {% for category_id in category_names.keys() %}
             <td>
                 {% if i < documents_by_category[category_id]|length %}
-                    {{ documents_by_category[category_id][i] }}
+                    {{ documents_by_category[category_id][i] | safe }}
                 {% endif %}
             </td>
             {% endfor %}
