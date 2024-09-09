@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ 'New Specification' if specification is none else 'Edit Specification' }}</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ 'New Specification' if specification is none else 'Edit Specification' }}</h1>
+    <form method="POST">
+        <table>
+            <tr>
+                <th>Title</th>
+                <td><input type="text" name="title" value="{{ specification[1] }}" required></td>
+            </tr>
+            <tr>
+                <th>Owner</th>
+                <td>
+                    <select name="owner" required>
+                        {% for owner in owners %}
+                            <option value="{{ owner[0] }}" {% if owner[0] == specification[2] %}selected{% endif %}>
+                                {{ owner[1] }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Review State</th>
+                <td>
+                    <select name="review_state" required>
+                        {% for review_state in review_states %}
+                            <option value="{{ review_state[0] }}" {% if review_state[0] == specification[9] %}selected{% endif %}>
+                                {{ review_state[1] }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Documents</th>
+                <td>
+                    <select name="document" required>
+                        {% for document in documents %}
+                            <option value="{{ document[0] }}" {% if document[0] == specification[4] %}selected{% endif %}>
+                                {{ document[1] }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Spec From</th>
+                <td>{{ specification[6] }}</td>
+            </tr>
+            <tr>
+                <th>Spec To</th>
+                <td>{{ specification[7] }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ specification[8] }}</td>
+            </tr>
+            <tr>
+                <th>Specification Type Name</th>
+                <td>{{ specification[11] }}</td>
+            </tr>
+            <tr>
+                <th>Specification Type</th>
+                <td>{{ specification[12] }}</td>
+            </tr>
+        </table>
+        <input type="submit" value="{{ 'Create Specification' if specification is none else 'Update Specification' }}">
+    </form>
+</body>
+</html>
