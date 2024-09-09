@@ -55,7 +55,7 @@
         </tr>
         {% for row in owner_rows %}
         <tr>
-            <form action="{{ url_for('modify_row', table_name='OWNER', row_id=row['id']) }}" method="post">
+            <form action="{{ url_for('modify_setting', table_name='OWNER', row_id=row['id']) }}" method="post">
                 {% for key, value in row.items() %}
                 <td>
                     {% if key == 'id' %}
@@ -70,14 +70,14 @@
                 </td>
             </form>
             <td>
-                <form action="{{ url_for('delete_row', table_name='OWNER', row_id=row['id']) }}" method="post">
+                <form action="{{ url_for('delete_setting', table_name='OWNER', row_id=row['id']) }}" method="post">
                     <button type="submit" class="delete-button">Delete</button>
                 </form>
             </td>
         </tr>
         {% endfor %}
         <tr>
-            <form action="{{ url_for('add_row', table_name='OWNER') }}" method="post">
+            <form action="{{ url_for('add_setting', table_name='OWNER') }}" method="post">
                 {% for key in owner_rows[0].keys() %}
                 <td>
                     {% if key == 'id' %}
@@ -105,7 +105,7 @@
         </tr>
         {% for row in category_rows %}
         <tr>
-            <form action="{{ url_for('modify_row', table_name='CATEGORY', row_id=row['id']) }}" method="post">
+            <form action="{{ url_for('modify_setting', table_name='CATEGORY', row_id=row['id']) }}" method="post">
                 {% for key, value in row.items() %}
                 <td>
                     {% if key == 'id' %}
@@ -120,14 +120,14 @@
                 </td>
             </form>
             <td>
-                <form action="{{ url_for('delete_row', table_name='CATEGORY', row_id=row['id']) }}" method="post">
+                <form action="{{ url_for('delete_setting', table_name='CATEGORY', row_id=row['id']) }}" method="post">
                     <button type="submit" class="delete-button">Delete</button>
                 </form>
             </td>
         </tr>
         {% endfor %}
         <tr>
-            <form action="{{ url_for('add_row', table_name='CATEGORY') }}" method="post">
+            <form action="{{ url_for('add_setting', table_name='CATEGORY') }}" method="post">
                 {% for key in category_rows[0].keys() %}
                 <td>
                     {% if key == 'id' %}
@@ -154,7 +154,7 @@
         </tr>
         {% for row in doc_state_rows %}
         <tr>
-            <form action="{{ url_for('modify_row', table_name='DOC_STATE', row_id=row['id']) }}" method="post">
+            <form action="{{ url_for('modify_setting', table_name='DOC_STATE', row_id=row['id']) }}" method="post">
                 {% for key, value in row.items() %}
                 <td>
                     {% if key == 'id' %}
@@ -169,14 +169,14 @@
                 </td>
             </form>
             <td>
-                <form action="{{ url_for('delete_row', table_name='DOC_STATE', row_id=row['id']) }}" method="post">
+                <form action="{{ url_for('delete_setting', table_name='DOC_STATE', row_id=row['id']) }}" method="post">
                     <button type="submit" class="delete-button">Delete</button>
                 </form>
             </td>
         </tr>
         {% endfor %}
         <tr>
-            <form action="{{ url_for('add_row', table_name='DOC_STATE') }}" method="post">
+            <form action="{{ url_for('add_setting', table_name='DOC_STATE') }}" method="post">
                 {% for key in doc_state_rows[0].keys() %}
                 <td>
                     {% if key == 'id' %}
@@ -203,7 +203,7 @@
         </tr>
         {% for row in review_state_rows %}
         <tr>
-            <form action="{{ url_for('modify_row', table_name='REVIEW_STATE', row_id=row['id']) }}" method="post">
+            <form action="{{ url_for('modify_setting', table_name='REVIEW_STATE', row_id=row['id']) }}" method="post">
                 {% for key, value in row.items() %}
                 <td>
                     {% if key == 'id' %}
@@ -218,14 +218,14 @@
                 </td>
             </form>
             <td>
-                <form action="{{ url_for('delete_row', table_name='REVIEW_STATE', row_id=row['id']) }}" method="post">
+                <form action="{{ url_for('delete_setting', table_name='REVIEW_STATE', row_id=row['id']) }}" method="post">
                     <button type="submit" class="delete-button">Delete</button>
                 </form>
             </td>
         </tr>
         {% endfor %}
         <tr>
-            <form action="{{ url_for('add_row', table_name='REVIEW_STATE') }}" method="post">
+            <form action="{{ url_for('add_setting', table_name='REVIEW_STATE') }}" method="post">
                 {% for key in review_state_rows[0].keys() %}
                 <td>
                     {% if key == 'id' %}
@@ -255,7 +255,7 @@
         </tr>
         {% for row in document_rows %}
         <tr>
-            <form action="{{ url_for('modify_row', table_name='DOCUMENT', row_id=row['id']) }}" method="post">
+            <form action="{{ url_for('modify_setting', table_name='DOCUMENT', row_id=row['id']) }}" method="post">
                 <td>{{ row['id'] }}</td>
                 <td><input type="text" name="name" value="{{ row['name'] }}"></td>
                 <td><input type="text" name="initials" value="{{ row['initials'] }}"></td>
@@ -278,14 +278,14 @@
                 </td>
             </form>
             <td>
-                <form action="{{ url_for('delete_row', table_name='DOCUMENT', row_id=row['id']) }}" method="post">
+                <form action="{{ url_for('delete_setting', table_name='DOCUMENT', row_id=row['id']) }}" method="post">
                     <button type="submit" class="delete-button">Delete</button>
                 </form>
             </td>
         </tr>
         {% endfor %}
         <tr>
-            <form action="{{ url_for('add_row', table_name='DOCUMENT') }}" method="post">
+            <form action="{{ url_for('add_setting', table_name='DOCUMENT') }}" method="post">
                 <td>(Auto)</td>
                 <td><input type="text" name="name" placeholder="Enter Name"></td>
                 <td><input type="text" name="initials" placeholder="Enter Initials"></td>
