@@ -82,6 +82,7 @@
                     </select>
                 </td>
             </tr>
+
             <tr>
                 <th>Documents</th>
                 <td>
@@ -95,7 +96,7 @@
                 </td>
             </tr>
             <tr>
-                <th>Linked Specifications (Spec Parent)</th>
+                <th>Parent specifications</th>
                 <td>
                     <div>
                         {% for spec in spec_references %}
@@ -111,6 +112,19 @@
                     <input type="text" name="add_spec_parent" placeholder="Enter Spec ID">
                 </td>
             </tr>
+
+            <tr>
+                <th>Has child specifications:</th>
+                <td>
+                    {% if child_specs %}
+                        {% for child in child_specs %}
+                            <li><a href="{{ url_for('manage_specification', spec_id=child[0]) }}">{{ child[0] }} - {{ child[1] }}</a></li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No child specifications found.</li>
+                    {% endif %}
+                </td>
+            </tr>    
 
             <tr>
                 <th>Date</th>
