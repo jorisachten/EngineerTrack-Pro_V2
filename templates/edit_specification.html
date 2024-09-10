@@ -32,6 +32,22 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+        .linked-spec {
+            margin: 5px 0;
+            padding: 5px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .linked-spec button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .linked-spec button:hover {
+            background-color: #d32f2f;
+        }
     </style>
 </head>
 <body>
@@ -79,24 +95,26 @@
                 </td>
             </tr>
             <tr>
-                <th>Spec From</th>
-                <td>{{ specification[6] }}</td>
+                <th>Linked Specifications (Spec To)</th>
+                <td>
+                    <div>
+                        {% for spec in spec_references %}
+                            <div class="linked-spec">
+                                <a href="{{ url_for('manage_specification', spec_id=spec[0]) }}">{{ spec[0] }} - {{ spec[1] }}</a>
+                                <button type="submit" name="remove_spec_to" value="{{ spec[0] }}">Remove</button>
+                                <input type="hidden" name="spec_to_hidden" value="{{ spec[0] }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <br>
+                    <label for="add_spec_to">Add Specification by Spec ID:</label>
+                    <input type="text" name="add_spec_to" placeholder="Enter Spec ID">
+                </td>
             </tr>
-            <tr>
-                <th>Spec To</th>
-                <td>{{ specification[7] }}</td>
-            </tr>
+
             <tr>
                 <th>Date</th>
                 <td>{{ specification[8] }}</td>
-            </tr>
-            <tr>
-                <th>Specification Type Name</th>
-                <td>{{ specification[11] }}</td>
-            </tr>
-            <tr>
-                <th>Specification Type</th>
-                <td>{{ specification[12] }}</td>
             </tr>
         </table>
         <input type="submit" value="{{ 'Create Specification' if specification is none else 'Update Specification' }}">
