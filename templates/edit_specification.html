@@ -94,29 +94,27 @@
                     </select>
                 </td>
             </tr>
-            
             <tr>
-                <th>Linked Specifications (Spec To)</th>
+                <th>Linked Specifications (Spec Parent)</th>
                 <td>
                     <div>
                         {% for spec in spec_references %}
                             <div class="linked-spec">
                                 <a href="{{ url_for('manage_specification', spec_id=spec[0]) }}">{{ spec[0] }} - {{ spec[2] }} - {{ spec[1] }}</a>
-                                <button type="submit" name="remove_spec_to" value="{{ spec[0] }}">Remove</button>
-                                <input type="hidden" name="spec_to_hidden" value="{{ spec[0] }}">
+                                <button type="submit" name="remove_spec_parent" value="{{ spec[0] }}">Remove</button>
+                                <input type="hidden" name="spec_parent_hidden" value="{{ spec[0] }}">
                             </div>
                         {% endfor %}
                     </div>
                     <br>
-                    <label for="add_spec_to">Add Specification by Spec ID:</label>
-                    <input type="text" name="add_spec_to" placeholder="Enter Spec ID">
+                    <label for="add_spec_parent">Add Specification by Spec ID:</label>
+                    <input type="text" name="add_spec_parent" placeholder="Enter Spec ID">
                 </td>
             </tr>
 
-
             <tr>
                 <th>Date</th>
-                <td>{{ specification[8] }}</td>
+                <td>{{ specification[7] }}</td>
             </tr>
         </table>
         <input type="submit" value="{{ 'Create Specification' if specification is none else 'Update Specification' }}">
