@@ -16,6 +16,14 @@
     </style>
 </head>
 <body>
+    {% extends 'base.html' %}
+    
+    {% block title %}Page 1{% endblock %}
+    
+    {% block content %}
+
+
+    
     <h1>Display Documents</h1>
     <table>
         <tr>
@@ -36,5 +44,6 @@
         </tr>
         {% endfor %}
     </table>
+    {% endblock %}    
 </body>
 </html>

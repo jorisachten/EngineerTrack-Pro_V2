@@ -51,6 +51,16 @@
     </style>
 </head>
 <body>
+    <!-- templates/page2.html -->
+    {% extends 'base.html' %}
+    
+    {% block title %}Page 2{% endblock %}
+    
+    {% block content %}
+        <h1>Welcome to Page 2</h1>
+        <p>This is the content of Page 2.</p>
+    {% endblock %}
+
     <h1>{{ 'New Specification' if specification is none else 'Edit Specification' }}</h1>
     <form method="POST">
         <table>

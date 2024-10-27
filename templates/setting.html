@@ -43,6 +43,15 @@
     </style>
 </head>
 <body>
+    {% extends 'base.html' %}
+    
+    {% block title %}Page 3{% endblock %}
+    
+    {% block content %}
+        <h1>Welcome to Page 3</h1>
+        <p>This is the content of Page 3.</p>
+    {% endblock %}
+    
     <h1>Configuration Tables</h1>
 
     <h2>OWNER Table</h2>
