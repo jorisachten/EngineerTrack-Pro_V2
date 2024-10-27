@@ -1,49 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Display Documents</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: left;
-            vertical-align: top;
-        }
-    </style>
-</head>
-<body>
-    {% extends 'base.html' %}
-    
-    {% block title %}Page 1{% endblock %}
-    
-    {% block content %}
+{% extends 'base.html' %}
+{% block title %}Documents{% endblock %}
+{% block content %}
 
-
-    
-    <h1>Display Documents</h1>
-    <table>
-        <tr>
-            {% for category_id in category_names.keys() %}
-            <th>{{ category_names[category_id] }}</th>
-            {% endfor %}
-        </tr>
-        
-        {% for i in range(max_docs) %}
-        <tr>
-            {% for category_id in category_names.keys() %}
-            <td>
-                {% if i < documents_by_category[category_id]|length %}
-                    {{ documents_by_category[category_id][i] | safe }}
-                {% endif %}
-            </td>
-            {% endfor %}
-        </tr>
+<h1>Display Documents</h1>
+<table>
+    <tr>
+        {% for category_id in category_names.keys() %}
+        <th>{{ category_names[category_id] }}</th>
         {% endfor %}
-    </table>
-    {% endblock %}    
-</body>
-</html>
+    </tr>
+    
+    {% for i in range(max_docs) %}
+    <tr>
+        {% for category_id in category_names.keys() %}
+        <td>
+            {% if i < documents_by_category[category_id]|length %}
+                {{ documents_by_category[category_id][i] | safe }}
+            {% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}    
